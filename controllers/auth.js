@@ -3,8 +3,7 @@ const{comparePassword, hashPassword} = require ("../helpers/auth.js");
 const jwt  = require("jsonwebtoken");
 const { use } = require("../routes/auth.js");
 require("dotenv").config();
-const {requireSignin,isAdmin} = require("../middlewares/auth.js")
-
+const {requireSign,isAdmin} = require("../middlewares/auth.js")
 
 
 

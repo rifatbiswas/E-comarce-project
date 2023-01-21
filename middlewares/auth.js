@@ -8,6 +8,7 @@ exports.requireSign = (req,res,next) =>{
         process.env.JWT_SECRET
        );
        req.user = decoded;
+       console.log("decoded");
        next(); 
     } catch (err) {
         return res.status(404).json(err);
@@ -17,9 +18,9 @@ exports.requireSign = (req,res,next) =>{
 exports.isAdmin = async (req, res, next)=>{
     try {
        const user = await User.findById(req.user._id);
-       if(!user.role !== 1){
-        return res.status(404).json({error:"Unauthirized"})
-       } else{
+       if(user.role != 1){
+        return res.status(404).json({error:"Middleware Unauthirized"})
+       } else{   
         next();
        }
     } catch (err) {
