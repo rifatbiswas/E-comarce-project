@@ -11,7 +11,7 @@ const midll = require('../middlewares/auth.js');
 router.post("/register",controler.register);
 router.post("/login",controler.login);
 router.get("/auth-cheak", controler.requireSignin);
-router.get("/admin-cheak",midll.requireSign, controler.isAdmin);
+router.get("/admin-cheak",midll.requireSign, midll.isAdmin);
 router.put("/updateProfile",midll.requireSign,controler.updateProfile);
 
 
