@@ -1,10 +1,7 @@
 const User = require("../models/user.js");
 const{comparePassword, hashPassword} = require ("../helpers/auth.js");
 const jwt  = require("jsonwebtoken");
-const { use } = require("../routes/auth.js");
 require("dotenv").config();
-const {requireSign,isAdmin} = require("../middlewares/auth.js")
-
 
 
 exports.register = async (req,res)=>{
@@ -106,6 +103,7 @@ exports.requireSignin = async (req,res)=>{
     res.send({ok:"You are authorized"})
 }
 // user Admin  kina
+
     exports.isAdmin = async (req,res)=>{
         res.send({ok:"You are admin "})
     };
