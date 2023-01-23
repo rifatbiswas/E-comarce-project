@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "81ec5ca1-01a5-4b40-9b80-29c5c80a6185",
+		"name": "Ecommarce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24585167"
+	},
+	"item": [
+		{
+			"name": "cetegory",
+			"item": [
+				{
+					"name": "creatcetegory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Ledis fashion\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bassurl}}/category",
+							"host": [
+								"{{bassurl}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "readCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{bassurl}}/category/:slug",
+							"host": [
+								"{{bassurl}}"
+							],
+							"path": [
+								"category",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "old-fashion"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{bassurl}}/categories",
+							"host": [
+								"{{bassurl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCetagory",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"kid's Fashion\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bassurl}}/category/:categoryId",
+							"host": [
+								"{{bassurl}}"
+							],
+							"path": [
+								"category",
+								":categoryId"
+							],
+							"variable": [
+								{
+									"key": "categoryId",
+									"value": "63cc31347b999fa8e35db306"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeCetagory",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{bassurl}}/category/:categoryId",
+							"host": [
+								"{{bassurl}}"
+							],
+							"path": [
+								"category",
+								":categoryId"
+							],
+							"variable": [
+								{
+									"key": "categoryId",
+									"value": "63cc31347b999fa8e35db306"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Rajebul Biswas\",\r\n    \"email\":\"rifatbiswas424@@gmail.com\",\r\n    \"password\":\"13245rifat\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bassurl}}/register",
+							"host": [
+								"{{bassurl}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"rifatbiswas2@gmail.com\",\r\n    \"password\":\"132rifat\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bassurl}}/login",
+							"host": [
+								"{{bassurl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth-cheak",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{bassurl}}/auth-cheak",
+							"host": [
+								"{{bassurl}}"
+							],
+							"path": [
+								"auth-cheak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin-cheak",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{bassurl}}/admin-cheak",
+							"host": [
+								"{{bassurl}}"
+							],
+							"path": [
+								"admin-cheak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProfile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Rifat Biswas\",\r\n    \"address\":\"khulna\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bassurl}}/updateProfile",
+							"host": [
+								"{{bassurl}}"
+							],
+							"path": [
+								"updateProfile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "createProduct",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Fair and Handsome",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Good product",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "200",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "63cc2ffca39020e84b34a766",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "shiping",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/I:/Wallpaper/82-822588_wallpaper-programao.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{bassurl}}/product",
+							"host": [
+								"{{bassurl}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "bassurl",
+			"value": "http://localhost:8000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M1NmJkYWFhYThiNTE2ODE1NGIyMDciLCJpYXQiOjE2NzQzMjQwODYsImV4cCI6MTY3NDkyODg4Nn0.MI9nddIs47C1An8RZXtY1NxMcH452kU4ssAXJM0RgzA",
+			"type": "string"
+		}
+	]
+}
