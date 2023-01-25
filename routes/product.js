@@ -7,13 +7,14 @@ const{requireSign, isAdmin} = require("../middlewares/auth.js");
 
 
 //controler
-const{ create} = require("../controllers/product.js");
+const{ create, list} = require("../controllers/product.js");
 
 
 
 //all routes..
 
-router.get("/product", requireSign, isAdmin, formidabel(), create);
+router.post("/product", requireSign, isAdmin, formidabel(), create);
+router.get("/product", list)
 
 
 module.exports = router;

@@ -43,3 +43,17 @@ exports.create = async (req, res) => {
     return res.status(400).json({error:"product create fail"})
   }
 };
+
+exports.list = async (req,res)=>{
+    try {
+        const product = await Product.find({})
+        .populate("category")
+        .select("-photo")
+        .limit (12)
+        .sort({ createAt: -1})
+
+        res.json(product);
+    } catch (error) {
+        res.status(400).json({error:"Product list not found"});
+    }
+}
