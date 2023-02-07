@@ -98,16 +98,6 @@ exports. login =  async (req,res)=>{
     }
 };
 
-//user authorized 
-exports.requireSignin = async (req,res)=>{
-    res.send({ok:"You are authorized"})
-}
-// user Admin  kina
-
-    exports.isAdmin = async (req,res)=>{
-        res.send({ok:"You are admin "})
-    };
-
 
 //user jodi ter kono  information update kora
 exports.updateProfile = async (req,res)=>{

@@ -3,18 +3,21 @@ const router = express.Router();
 const formidabel = require('express-formidable');
 
 //middleware..
-const{requireSign, isAdmin} = require("../middlewares/auth.js");
+const{requireSignin, isAdmin} = require("../middlewares/auth.js");
 
 
 //controler
-const{ create, list} = require("../controllers/product.js");
-
+const{ create, list, read, photo, remove, update} = require("../controllers/product.js");
 
 
 //all routes..
 
-router.post("/product", requireSign, isAdmin, formidabel(), create);
+router.post("/product", requireSignin, isAdmin, formidabel(), create);
 router.get("/product", list)
+router.get("/product/:slug", read);
+router.get("/product/photo/:productId", photo);
+router.delete("/product/:productId", requireSignin, isAdmin, remove);
+router.put("/product/:productId", requireSignin, isAdmin, formidabel(), update);
 
 
 module.exports = router;

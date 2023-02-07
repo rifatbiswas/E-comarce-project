@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.js");
 
-exports.requireSign = (req,res,next) =>{
+exports.requireSignin = (req,res,next) =>{
     try {
        const decoded = jwt.verify(
         req.headers.token,
