@@ -130,4 +130,81 @@ exports.update = async (req,res)=>{
     } catch (error) {
       res.status(400).json({error:"Update Unsuccess"})  
     }
-}
+};
+
+exports.filteredProducts = async (req, res) => {
+    try {
+      const { checked, radio } = req.body;
+      
+      let args = {};
+      if (checked.length > 0) args.category = checked
+      if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };
+      console.log("args => ", args);
+  
+      const products = await Product.find(args);
+      console.log("filtered products query => ", products.length);
+      res.json(products);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  exports.productsCount = async (req, res) => {
+    try {
+      const total = await Product.find({}).estimatedDocumentCount();
+      res.json(total);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  exports.listProducts = async (req, res) => {
+    try {
+      const perPage = 2;
+      const page = req.params.page ? req.params.page : 1;
+  
+      const products = await Product.find({})
+        .select("-photo")
+        .skip((page - 1) * perPage)
+        .limit(perPage)
+        .sort({ createdAt: -1 });
+  
+      res.json(products);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  exports.productsSearch = async (req, res) => {
+    try {
+      const { keyword } = req.params;
+      const results = await Product.find({
+        $or: [
+          { name: { $regex: keyword, $options: "i" } },
+          { description: { $regex: keyword, $options: "i" } }        
+        ],
+      }).select("-photo");
+  
+      res.json(results);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  exports.relatedProducts = async (req, res) => {
+    try {
+      const { productId, categoryId } = req.params;
+      
+      const related = await Product.find({
+        category: categoryId,
+        _id: { $ne: productId },
+      })
+        .select("-photo")
+        .populate("category")
+        .limit(3);
+  
+      res.json(related);
+    } catch (err) {
+      console.log(err);
+    }
+  };
